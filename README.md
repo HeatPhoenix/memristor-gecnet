@@ -1,12 +1,12 @@
 # Memristor-based G&CNET accelerator
 
-This repository contains the code used to write the paper: "Guidance and Control Neural Network Acceleration using Memristors"
+This repository contains the code used to write the paper: "Guidance and Control Neural Network Acceleration using Memristors". 
 
-A video is also provided explaining the Guidance & Control Networks (G&CNETs) and the backward propagation of optimal samples: "[Video: Neural representation of a time optimal, constant acceleration rendezvous](https://youtu.be/XdpqDP_hY4k)"  
+The studied G&CNETs are derived from the paper "[Neural representation of a time optimal, constant acceleration rendezvous](https://arxiv.org/abs/2203.15490)". The authors of this paper also provide a video explaining the Guidance & Control Networks (G&CNETs) and the backward propagation of optimal samples: "[Video: Neural representation of a time optimal, constant acceleration rendezvous](https://youtu.be/XdpqDP_hY4k)"  
 
 ## Description
 
-We train two neural models using the data augmentation technique called backward generation of optimal examples. The models learn to represent the optimal control policy (i.e. thrust direction) and the value function (i.e. time of flight) for a time-optimal, constant acceleration rendezvous. The optimal control problem is inspired by the 11th Edition of the Global Trajectory Optimisation Competition (GTOC 11) and constitutes transfers starting from the asteroid belt and ending at a specific phase of a circular orbit.
+We train two neural models using the data augmentation technique called backward generation of optimal examples. The models learn to represent the optimal control policy (i.e. thrust direction) and the value function (i.e. time of flight) for a time-optimal, constant acceleration rendezvous. The optimal control problem is inspired by the 11th Edition of the Global Trajectory Optimisation Competition (GTOC 11) and constitutes transfers starting from the asteroid belt and ending at a specific phase of a circular orbit. This is then repeated but within the structure of a simulation of a memristor-based neural network accelerator (rather than the default FP32 of PyTorch) with a neural network of identical architecture (in terms of size, layers and activation). The result of both is evaluated, and figures are plotted.
 
 ## Repository structure
 
@@ -35,7 +35,7 @@ Creates error plots for thrust direction using a test set (which is generated us
 Evaluates the model by simulating the system dynamics using the control input provided by the trained model. Hence one can assess whether the learned control accumulates errors over an entire transfer or not. The dynamics are integrated until the nominal transfer time and until the semi-major axis is reached. The mean errors in final position, velocity, equinoctial parameters and time are computed (using a test set) as well as average prediction errors.
 
 The latter set also have corresponding "Simplified" versions, which are regular python scripts which are used in the sweep shell scripts.
-The original notebooks must be run first to generate the data necessary for the hardware notebooks/python scripts.
+The original notebooks must be run first to generate the data necessary for the hardware notebooks/python scripts. Lastly, figures can be plotted using the `paper_figure_plots.ipynb` notebook.
 
 ### Folders:
 
